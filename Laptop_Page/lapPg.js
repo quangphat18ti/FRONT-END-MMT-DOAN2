@@ -30,7 +30,7 @@ function renderCategories(categories) {
     let html = "";
     html +=
         `<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">`
-    
+
     for (let category of categories) {
         // console.log(category);
         html +=
@@ -73,7 +73,7 @@ clickCategories.forEach((cate) => {
 
 function renderFooterPages(categories) {
     let html = "";
-    
+
     for (let category of categories) {
         // console.log(category);
         html +=
@@ -257,7 +257,7 @@ function renderProduct(product) {
 
 
     // add click event
-    $('.go-to-compare-page').click(function() {
+    $('.go-to-compare-page').click(function () {
         console.log("Go to compare page");
         let id = this.querySelector(".card.content__product__item").id;
         console.log("Laptop = ", id);
@@ -341,11 +341,11 @@ pageConfig.addEventListener('change', () => {
 
     console.log("totalPages = ", totalPages);
     initRender(productArr, totalPages);
-    
+
     $('.btn-prev').addClass('btn-no-active');
     $('.btn-next').addClass('btn-no-active');
-    
-    if(totalPages > 1) 
+
+    if (totalPages > 1)
         $('.btn-next').removeClass('btn-no-active');
     changePage();
 });
@@ -436,24 +436,24 @@ async function main() {
         }
         if (cntChecked === 0) productArr = product;
 
-        totalPages = 
-        getCurrentPage(1);
+        totalPages =
+            getCurrentPage(1);
         initRender(productArr, totalPages);
     });
-    
+
     $('.price-option').change(function () {
         let minPr = document.getElementById('min-price').value;
         let maxPr = document.getElementById('max-price').value;
-    
+
         if (minPr != "" && maxPr != "") {
             productArr = (product.filter((item) => {
                 return (item.Price >= minPr) && (item.Price <= maxPr);
             }))
         }
-    
+
         if (minPr == "" && maxPr == "")
             productArr = product;
-    
+
         getCurrentPage(1);
         initRender(productArr, totalPages);
     });
