@@ -30,7 +30,7 @@ function renderCategories(categories) {
     let html = "";
     html +=
         `<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">`
-    
+
     for (let category of categories) {
         // console.log(category);
         html +=
@@ -73,7 +73,7 @@ clickCategories.forEach((cate) => {
 
 function renderFooterPages(categories) {
     let html = "";
-    
+
     for (let category of categories) {
         // console.log(category);
         html +=
@@ -141,7 +141,7 @@ async function getData() {
     let cateName = loadCateName();
     // console.log(cateName)
     // const URL = 'https://mmt-main-dbserver.vercel.app/api/category?quantity=100&type=' + cateName;
-    const URL = 'https://db-mmt-2-nhat.vercel.app/api/category?quantity=100&type=' + cateName;
+    const URL = 'https://db-mmt-2-nhat.vercel.app/api/category?sort=true&type=' + cateName;
     // console.log(URL);
     let response = await fetch(URL, {
         method: 'GET',
