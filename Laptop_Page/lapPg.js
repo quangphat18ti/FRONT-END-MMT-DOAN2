@@ -436,26 +436,45 @@ async function main() {
         }
         if (cntChecked === 0) productArr = product;
 
-        totalPages =
-            getCurrentPage(1);
+        // totalPages =
+        //     getCurrentPage(1);
+        // initRender(productArr, totalPages);
+        getCurrentPage(idPage);
         initRender(productArr, totalPages);
+        changePage();
+        if (totalPages <= 1) {
+            $('.btn-prev').addClass('btn-no-active');
+            $('.btn-next').addClass('btn-no-active');
+        } else {
+            $('.btn-next').removeClass('btn-no-active');
+        }
     });
 
     $('.price-option').change(function () {
+        let saveProArr = productArr;
         let minPr = document.getElementById('min-price').value;
         let maxPr = document.getElementById('max-price').value;
 
         if (minPr != "" && maxPr != "") {
-            productArr = (product.filter((item) => {
+            productArr = (saveProArr.filter((item) => {
                 return (item.Price >= minPr) && (item.Price <= maxPr);
             }))
         }
 
         if (minPr == "" && maxPr == "")
-            productArr = product;
+            productArr = saveProArr;
 
-        getCurrentPage(1);
+        // getCurrentPage(1);
+        // initRender(productArr, totalPages);
+        getCurrentPage(idPage);
         initRender(productArr, totalPages);
+        changePage();
+        if (totalPages <= 1) {
+            $('.btn-prev').addClass('btn-no-active');
+            $('.btn-next').addClass('btn-no-active');
+        } else {
+            $('.btn-next').removeClass('btn-no-active');
+        }
     });
 }
 
